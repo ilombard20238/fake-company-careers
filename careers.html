@@ -76,7 +76,36 @@
     </div>
 
 </section>
+<section class="application">
+    <h2>Apply Now</h2>
 
+    <form action="YOUR_WEBHOOK_URL" method="POST" enctype="multipart/form-data" id="applicationForm">
+
+        <input type="text" name="name" placeholder="Full Name" required>
+
+        <input type="email" name="email" placeholder="Email Address" required>
+
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+
+        <select name="job" required>
+            <option value="">Select Position</option>
+            <option value="Data Analyst">Data Analyst</option>
+            <option value="Software Engineer">Software Engineer</option>
+            <option value="Marketing Specialist">Marketing Specialist</option>
+        </select>
+
+        <textarea name="message" placeholder="Why should we hire you?" rows="4"></textarea>
+
+        <input type="file" name="resume" required>
+
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <p id="successMessage" style="display:none; color:green; margin-top:15px;">
+        ✅ Application submitted successfully!
+    </p>
+</section>
+    
 <footer>
     <p>© 2026 NovaTech Solutions</p>
 </footer>
