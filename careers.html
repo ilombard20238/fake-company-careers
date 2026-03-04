@@ -21,65 +21,33 @@
     <!-- DATA ANALYST -->
     <div class="job-card">
         <h2>Data Analyst</h2>
-        <br>
         <p><strong>Description:</strong> Analyze datasets to drive business decisions.</p>
         <p><strong>Skills:</strong> Python, SQL, Data Visualization</p>
-
-        <form action="YOUR_WEBHOOK_URL" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="job" value="Data Analyst">
-
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-
-            <input type="file" name="resume" required>
-
-            <button type="submit">Apply Now</button>
-        </form>
+        <button onclick="selectJob('Data Analyst')">Apply for this job</button>
     </div>
 
     <!-- SOFTWARE ENGINEER -->
     <div class="job-card">
         <h2>Software Engineer</h2>
-        <br>
         <p><strong>Description:</strong> Build and maintain scalable applications.</p>
         <p><strong>Skills:</strong> JavaScript, APIs, Backend Development</p>
-
-        <form action="YOUR_WEBHOOK_URL" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="job" value="Software Engineer">
-
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-
-            <input type="file" name="resume" required>
-
-            <button type="submit">Apply Now</button>
-        </form>
+        <button onclick="selectJob('Software Engineer')">Apply for this job</button>
     </div>
 
     <!-- MARKETING SPECIALIST -->
     <div class="job-card">
         <h2>Marketing Specialist</h2>
-        <br>
         <p><strong>Description:</strong> Develop campaigns to grow brand awareness.</p>
         <p><strong>Skills:</strong> SEO, Content Marketing, Analytics</p>
-
-        <form action="YOUR_WEBHOOK_URL" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="job" value="Marketing Specialist">
-
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-
-            <input type="file" name="resume" required>
-
-            <button type="submit">Apply Now</button>
-        </form>
+        <button onclick="selectJob('Marketing Specialist')">Apply for this job</button>
     </div>
 
 </section>
+
 <section class="application">
     <h2>Apply Now</h2>
 
-    <form action="YOUR_WEBHOOK_URL" method="POST" enctype="multipart/form-data" id="applicationForm">
+    <form action="https://workspace1.app.n8n.cloud/webhook-test/493b99e8-4037-4a22-8418-faa32cf61ed0" method="POST" enctype="multipart/form-data" id="applicationForm">
 
         <input type="text" name="name" placeholder="Full Name" required>
 
@@ -105,22 +73,27 @@
         ✅ Application submitted successfully!
     </p>
 </section>
-    
+
 <footer>
     <p>© 2026 NovaTech Solutions</p>
 </footer>
 
 <script>
-document.getElementById("applicationForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+// Auto-select job + scroll
+function selectJob(jobTitle) {
+    const dropdown = document.querySelector("select[name='job']");
+    dropdown.value = jobTitle;
 
-    // Show success message
+    document.querySelector(".application").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+// Show success message (does NOT block submission)
+document.getElementById("applicationForm").addEventListener("submit", function() {
     document.getElementById("successMessage").style.display = "block";
-
-    // Optional: clear form
-    this.reset();
 });
 </script>
+
 </body>
 </html>
-<form action="https://workspace1.app.n8n.cloud/webhook-test/493b99e8-4037-4a22-8418-faa32cf61ed0" method="POST" enctype="multipart/form-data">
