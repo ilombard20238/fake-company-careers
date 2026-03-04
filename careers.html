@@ -110,5 +110,16 @@
     <p>© 2026 NovaTech Solutions</p>
 </footer>
 
+<script>
+document.getElementById("applicationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Show success message
+    document.getElementById("successMessage").style.display = "block";
+
+    // Optional: clear form
+    this.reset();
+});
+</script>
 </body>
 </html>
