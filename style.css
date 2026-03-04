@@ -153,3 +153,36 @@ footer {
     background: #111827;
     color: #9ca3af;
 }
+
+/* APPLICATION SECTION */
+.application {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.application h2 {
+    margin-bottom: 20px;
+}
+
+.application input,
+.application select,
+.application textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 12px;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+}
+
+.application textarea {
+    resize: none;
+}
+
+.application button {
+    margin-top: 15px;
+}
