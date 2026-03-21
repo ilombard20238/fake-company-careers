@@ -18,7 +18,6 @@
 <section class="jobs">
     <h1 style="width:100%; text-align:center;">Open Positions</h1>
 
-    <!-- DATA ANALYST -->
     <div class="job-card">
         <h2>Data Analyst</h2>
         <p><strong>Description:</strong> Analyze datasets to drive business decisions.</p>
@@ -26,7 +25,6 @@
         <button onclick="selectJob('Data Analyst')">Apply for this job</button>
     </div>
 
-    <!-- SOFTWARE ENGINEER -->
     <div class="job-card">
         <h2>Software Engineer</h2>
         <p><strong>Description:</strong> Build and maintain scalable applications.</p>
@@ -34,28 +32,33 @@
         <button onclick="selectJob('Software Engineer')">Apply for this job</button>
     </div>
 
-    <!-- MARKETING SPECIALIST -->
     <div class="job-card">
         <h2>Marketing Specialist</h2>
         <p><strong>Description:</strong> Develop campaigns to grow brand awareness.</p>
         <p><strong>Skills:</strong> SEO, Content Marketing, Analytics</p>
         <button onclick="selectJob('Marketing Specialist')">Apply for this job</button>
     </div>
-
 </section>
 
 <section class="application">
     <h2>Apply Now</h2>
 
-    <form action="https://lombard12.app.n8n.cloud/webhook-test/493b99e8-4037-4a22-8418-faa32cf61ed0" method="POST" enctype="multipart/form-data" id="applicationForm">
+    <form 
+        action="https://lombard12.app.n8n.cloud/webhook/493b99e8-4037-4a22-8418-faa32cf61ed0" 
+        method="POST" 
+        enctype="multipart/form-data"
+        id="applicationForm"
+    >
 
-        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="hidden" name="source" value="github-application-form">
+
+        <input type="text" name="full_name" placeholder="Full Name" required>
 
         <input type="email" name="email" placeholder="Email Address" required>
 
         <input type="tel" name="phone" placeholder="Phone Number" required>
 
-        <select name="job" required>
+        <select name="position" required>
             <option value="">Select Position</option>
             <option value="Data Analyst">Data Analyst</option>
             <option value="Software Engineer">Software Engineer</option>
@@ -64,14 +67,12 @@
 
         <textarea name="message" placeholder="Why should we hire you?" rows="4"></textarea>
 
-        <input type="file" name="resume" required>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
 
         <button type="submit">Submit Application</button>
     </form>
 
-    <p id="successMessage" style="display:none; color:green; margin-top:15px;">
-        ✅ Application submitted successfully!
-    </p>
+    <p id="statusMessage" style="display:none; margin-top:15px;"></p>
 </section>
 
 <footer>
@@ -81,7 +82,7 @@
 <script>
 // Auto-select job + scroll
 function selectJob(jobTitle) {
-    const dropdown = document.querySelector("select[name='job']");
+    const dropdown = document.querySelector("select[name='position']");
     dropdown.value = jobTitle;
 
     document.querySelector(".application").scrollIntoView({
@@ -89,9 +90,12 @@ function selectJob(jobTitle) {
     });
 }
 
-// Show success message (does NOT block submission)
+// Better submission feedback
 document.getElementById("applicationForm").addEventListener("submit", function() {
-    document.getElementById("successMessage").style.display = "block";
+    const msg = document.getElementById("statusMessage");
+    msg.style.display = "block";
+    msg.style.color = "blue";
+    msg.innerText = "Submitting application...";
 });
 </script>
 
